@@ -94,7 +94,14 @@ Jawablah pertanyaan-pertanyaan di bawah ini.
 Kapan serangan brute force kata sandi SSH dimulai?
 Format Jawaban: 2023-09-15.
 
-2025-08-21
+ketik di terminal : 
+cd /var/log/
+cat /var/log/auth.log | grep -E 'Accepted'
+
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/35834fb2-abb7-478b-9718-5f0f1c9ac524" />
+
+
+jawaban : 2025-08-21
 
 Jawaban yang Benar
 Empat pengguna mana yang coba diretas oleh botnet tersebut?
