@@ -42,7 +42,14 @@ Jawablah pertanyaan-pertanyaan di bawah ini.
 Kapan pengguna Ubuntu pertama kali masuk melalui SSH?
 Contoh Jawaban: 2023-09-16.
 
-2024-10-22
+masuk ke auth,log dan cari : 
+cd  /var/log/auth.log
+cat /var/log/auth.log | grep " sshd "
+
+2024-10-22T09:13:00.342006+00:00 tryhackme-2404 sshd[877]: pam_unix(sshd:session): session opened for user ubuntu(uid=1000) by ubuntu(uid=0)
+2024-10-22T09:13:00.656774+00:00 tryhackme-2404 sshd[879]: Accepted publickey for ubuntu from 10.9.254.186 port 50305 ssh2: RSA SHA256:krhp4o9yYOyVKmAd7PAsdHrKQGJtjIQjt4w0K9R4kXg****
+
+jawaban : 2024-10-22
 
 Jawaban yang Benar
 
