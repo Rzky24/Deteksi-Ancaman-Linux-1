@@ -175,12 +175,25 @@ Gunakan /var/log/nginx/access.log pada VM untuk menjawab pertanyaan-pertanyaan t
 Jawablah pertanyaan-pertanyaan di bawah ini.
 Apa jalur menuju file Python yang coba dibuka oleh penyerang?
 
-/opt/trypingme/main.py
+masuk ke mode vim dulu
+
+ctrl z : untuk mengetik perintah di vim
+
+<img width="1357" height="625" alt="image" src="https://github.com/user-attachments/assets/8c7d3372-74f6-453c-802c-9fdb1031adeb" />
+
+
+jawaban : /opt/trypingme/main.py
 
 Jawaban yang Benar
 Jika Anda melihat isi file yang sudah dibuka, bendera apa yang Anda lihat di sana?
 
-THM{i_am_vulnerable!}
+cara sama seperti sebelumnya 
+
+<img width="1366" height="635" alt="image" src="https://github.com/user-attachments/assets/1773c140-6c78-4771-af29-49da9e5c2723" />
+
+
+
+jawaban : THM{i_am_vulnerable!}
 
 Jawaban yang Benar
 
@@ -222,19 +235,48 @@ Gunakan ausearch dan contoh-contoh dari tugas-tugas tersebut untuk mengungkap ga
 Jawablah pertanyaan-pertanyaan di bawah ini.
 Apa PPID dari perintah whoami yang mencurigakan itu?
 
-1018
+tetap di halaman vim 
+root@thm-vm:/var/log$  ausearch -i -x whoami
+----
+type=PROCTITLE msg=audit(08/26/25 20:09:49.742:158) : proctitle=whoami 
+type=CWD msg=audit(08/26/25 20:09:49.742:158) : cwd=/opt/trypingme 
+type=EXECVE msg=audit(08/26/25 20:09:49.742:158) : argc=1 a0=whoami 
+type=SYSCALL msg=audit(08/26/25 20:09:49.742:158) : arch=x86_64 syscall=execve success=yes exit=0 a0=0x57c312f7e650 a1=0x57c312f7e5d8 a2=0x57c312f7e5e8 a3=0x8 items=2 ppid=1018 pid=1020 auid=unset uid=ubuntu gid=ubuntu euid=ubuntu suid=ubuntu fsuid=ubuntu egid=ubuntu sgid=ubuntu fsgid=ubuntu tty=(none) ses=unset comm=whoami exe=/usr/bin/whoami subj=unconfined key=exec 
+root@thm-vm:/var/log$ 
+
+<img width="1366" height="434" alt="image" src="https://github.com/user-attachments/assets/12789e9d-4bea-4b0a-bdd2-a1738517db27" />
+
+
+jawaban 1018
 
 Jawaban yang Benar
 
 Jika kita menelusuri lebih ke atas, apa PID dari aplikasi TryPingMe?
 
-577
+tetap di mode vim
+
+root@thm-vm:/var/log$ ausearch -i --pid 1018
+----
+type=PROCTITLE msg=audit(08/26/25 20:09:49.738:156) : proctitle=/bin/sh -c ping -c 2 ;whoami 
+type=CWD msg=audit(08/26/25 20:09:49.738:156) : cwd=/opt/trypingme 
+type=EXECVE msg=audit(08/26/25 20:09:49.738:156) : argc=3 a0=/bin/sh a1=-c a2=ping -c 2 ;whoami 
+type=SYSCALL msg=audit(08/26/25 20:09:49.738:156) : arch=x86_64 syscall=execve success=yes exit=0 a0=0x7ef5401797b0 a1=0x7ef53e636870 a2=0x7ffeb1260660 a3=0x8 items=2 ppid=577 pid=1018 auid=unset uid=ubuntu gid=ubuntu euid=ubuntu suid=ubuntu fsuid=ubuntu egid=ubuntu sgid=ubuntu fsgid=ubuntu tty=(none) ses=unset comm=sh exe=/usr/bin/dash subj=unconfined key=exec 
+root@thm-vm:/var/log$ 
+
+
+<img width="1400" height="137" alt="image" src="https://github.com/user-attachments/assets/dd4feee6-5998-4b82-9ad7-017f4495e61b" />
+
+
+jawaban : 577
 
 Jawaban yang Benar
 
 Program apa yang digunakan penyerang untuk membuka reverse shell?
 
-Python
+cara tetap sama yaITU MASIH BERADA DI MODE VIM 
+root@thm-vm:/var/log$ ausearch -i --pid 577 | grep proctitle 
+
+jawaban : Python
 
 Jawaban yang Benar
 
