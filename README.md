@@ -59,7 +59,7 @@ Yea
 
 Jawaban yang Benar
 
-Detecting SSH Attacks
+# Detecting SSH Attacks
 Contoh Pelanggaran SSH
 Sekarang, bayangkan skenario dunia nyata yang umum: Seorang administrator TI mengaktifkan akses SSH publik ke server, mengizinkan autentikasi  berbasis kata sandi , dan menetapkan kata sandi yang lemah untuk salah satu pengguna dukungan. Gabungan ketiga tindakan ini pasti akan menyebabkan pelanggaran SSH , karena hanya masalah waktu sebelum pelaku ancaman menebak kata sandi. Contoh log di bawah ini menunjukkan kompromi tersebut: Serangan brute force diikuti oleh pelanggaran kata sandi. Ada tiga indikator login berbahaya yang perlu diperhatikan:
 
@@ -100,6 +100,9 @@ cat /var/log/auth.log | grep -E 'Accepted'
 
 <img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/35834fb2-abb7-478b-9718-5f0f1c9ac524" />
 
+sudo su 
+cd /var/log/
+grep -E 'sshd.*failed password for' auth.log
 
 jawaban : 2025-08-21
 
@@ -107,12 +110,23 @@ Jawaban yang Benar
 Empat pengguna mana yang coba diretas oleh botnet tersebut?
 Format Jawaban: Pisahkan dengan koma, dalam urutan abjad.
 
+<img width="1362" height="638" alt="image" src="https://github.com/user-attachments/assets/7c0c16b4-ca4e-42da-bcb7-6f5186f46039" />
+
+
 root, roy, sol, user
 
 Jawaban yang Benar
 Terakhir, IP mana yang berhasil membobol akses pengguna root?
 
-91.224.92.79
+terminal : sudo su
+          cd /var/log/
+
+root@thm-vm:/var/log$ grep -E 'sshd.*Accepted.*root' auth.log
+2025-08-21T17:10:08.113644+00:00 thm-vm sshd[16876]: Accepted password for root from 91.224.92.79 port 51555 ssh2
+root@thm-vm:/var/log$ 
+
+
+jawaban : 91.224.92.79
 
 Jawaban yang Benar
 
