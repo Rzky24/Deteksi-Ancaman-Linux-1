@@ -107,8 +107,16 @@ grep -E 'sshd.*failed password for' auth.log
 jawaban : 2025-08-21
 
 Jawaban yang Benar
+
+
+
 Empat pengguna mana yang coba diretas oleh botnet tersebut?
 Format Jawaban: Pisahkan dengan koma, dalam urutan abjad.
+
+ubuntu@thm-vm:~$ cd /var/log/
+ubuntu@thm-vm:/var/log$ sudo su
+root@thm-vm:/var/log$ grep -E 'sshd.*Failed password for' auth.log
+
 
 <img width="1362" height="638" alt="image" src="https://github.com/user-attachments/assets/7c0c16b4-ca4e-42da-bcb7-6f5186f46039" />
 
