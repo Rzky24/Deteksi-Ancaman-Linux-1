@@ -129,6 +129,8 @@ Terakhir, IP mana yang berhasil membobol akses pengguna root?
 terminal : sudo su
           cd /var/log/
           root@thm-vm:/var/log$ grep -E 'sshd.*Accepted.*root' auth.log
+
+          
           2025-08-21T17:10:08.113644+00:00 thm-vm sshd[16876]: Accepted password for root from 91.224.92.79 port 51555 ssh2
           root@thm-vm:/var/log$ 
 
