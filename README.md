@@ -43,6 +43,7 @@ Kapan pengguna Ubuntu pertama kali masuk melalui SSH?
 Contoh Jawaban: 2023-09-16.
 
 masuk ke auth,log dan cari : 
+sudo su untuk hak akses root tertinggi
 cd  /var/log/auth.log
 cat /var/log/auth.log | grep " sshd "
 
